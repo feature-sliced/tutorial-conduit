@@ -5,6 +5,4 @@ export const meta: MetaFunction = () => {
   return [{ title: "Conduit" }];
 };
 
-export default function Index() {
-  return <FeedPage />;
-}
+export default FeedPage;
