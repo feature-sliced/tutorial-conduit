@@ -8,6 +8,7 @@
     "dev": "remix dev --manual",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/index.js",
+    "generate-api-types": "openapi-typescript https://raw.githubusercontent.com/gothinkster/realworld/main/api/openapi.yml --output ./shared/api/v1.d.ts",
     "typecheck": "tsc"
   },
   "dependencies": {

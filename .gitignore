@@ -4,3 +4,5 @@ node_modules
 /build
 /public/build
 .env
+
+shared/api/v1.d.ts
