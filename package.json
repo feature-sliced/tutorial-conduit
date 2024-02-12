@@ -19,7 +19,8 @@
     "isbot": "^4.1.0",
     "openapi-fetch": "^0.8.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remix-utils": "^7.5.0"
   },
   "devDependencies": {
     "@feature-sliced/cli": "^1.0.0",
