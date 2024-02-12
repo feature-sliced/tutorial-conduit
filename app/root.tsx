@@ -32,6 +32,11 @@ export default function App() {
           type="text/css"
         />
         <link rel="stylesheet" href="//demo.productionready.io/main.css" />
+        <style>{`
+          button {
+            border: 0;
+          }
+        `}</style>
       </head>
       <body>
         <Outlet />
