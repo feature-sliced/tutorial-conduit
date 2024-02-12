@@ -15,7 +15,7 @@ export function ArticlePreview({ article }: ArticlePreviewProps) {
           <a href={`/profile/${article.author.username}`} className="author">
             {article.author.username}
           </a>
-          <span className="date">
+          <span className="date" suppressHydrationWarning>
             {new Date(article.createdAt).toLocaleDateString(undefined, {
               dateStyle: "long",
             })}
