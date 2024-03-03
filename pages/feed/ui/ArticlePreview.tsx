@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import type { Article } from "shared/api";
 
 interface ArticlePreviewProps {
@@ -8,13 +9,17 @@ export function ArticlePreview({ article }: ArticlePreviewProps) {
   return (
     <div className="article-preview">
       <div className="article-meta">
-        <a href={`/profile/${article.author.username}`}>
+        <Link to={`/profile/${article.author.username}`} prefetch="intent">
           <img src={article.author.image} alt="" />
-        </a>
+        </Link>
         <div className="info">
-          <a href={`/profile/${article.author.username}`} className="author">
+          <Link
+            to={`/profile/${article.author.username}`}
+            className="author"
+            prefetch="intent"
+          >
             {article.author.username}
-          </a>
+          </Link>
           <span className="date" suppressHydrationWarning>
             {new Date(article.createdAt).toLocaleDateString(undefined, {
               dateStyle: "long",
@@ -25,7 +30,11 @@ export function ArticlePreview({ article }: ArticlePreviewProps) {
           <i className="ion-heart"></i> {article.favoritesCount}
         </button>
       </div>
-      <a href={`/article/${article.slug}`} className="preview-link">
+      <Link
+        to={`/article/${article.slug}`}
+        className="preview-link"
+        prefetch="intent"
+      >
         <h1>{article.title}</h1>
         <p>{article.description}</p>
         <span>Read more...</span>
@@ -36,7 +45,7 @@ export function ArticlePreview({ article }: ArticlePreviewProps) {
             </li>
           ))}
         </ul>
-      </a>
+      </Link>
     </div>
   );
 }
