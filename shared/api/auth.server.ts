@@ -1,4 +1,3 @@
-import { createContext } from "react";
 import { createCookieSessionStorage, redirect } from "@remix-run/node";
 import invariant from "tiny-invariant";
 
@@ -51,5 +50,3 @@ export async function getUserFromSession(request: Request) {
 
   return session.get("user") ?? null;
 }
-
-export const CurrentUser = createContext<User | null>(null);

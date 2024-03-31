@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, useLocation } from "@remix-run/react";
 
-import { CurrentUser } from "../api/auth";
+import { CurrentUser } from "../api/currentUser";
 
 export function Header() {
   const currentUser = useContext(CurrentUser);
