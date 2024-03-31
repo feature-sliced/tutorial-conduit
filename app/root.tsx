@@ -48,7 +48,7 @@ export default function App() {
         `}</style>
       </head>
       <body>
-        <CurrentUser.Provider value={user ?? null}>
+        <CurrentUser.Provider value={user}>
           <Header />
           <Outlet />
         </CurrentUser.Provider>
