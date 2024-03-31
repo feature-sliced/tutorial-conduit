@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import type { Article } from "shared/api";
 
 interface ArticlePreviewProps {
@@ -26,9 +26,19 @@ export function ArticlePreview({ article }: ArticlePreviewProps) {
             })}
           </span>
         </div>
-        <button className="btn btn-outline-primary btn-sm pull-xs-right">
-          <i className="ion-heart"></i> {article.favoritesCount}
-        </button>
+        <Form
+          method="post"
+          action={`/article/${article.slug}`}
+          preventScrollReset
+        >
+          <button
+            name="_action"
+            value={article.favorited ? "unfavorite" : "favorite"}
+            className={`btn ${article.favorited ? "btn-primary" : "btn-outline-primary"} btn-sm pull-xs-right`}
+          >
+            <i className="ion-heart"></i> {article.favoritesCount}
+          </button>
+        </Form>
       </div>
       <Link
         to={`/article/${article.slug}`}
