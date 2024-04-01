@@ -21,6 +21,7 @@ export function Comments() {
         >
           <div className="card-block">
             <textarea
+              required
               className="form-control"
               name="comment"
               placeholder="Write a comment..."
