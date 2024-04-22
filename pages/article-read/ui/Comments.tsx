@@ -17,7 +17,6 @@ export function Comments() {
           preventScrollReset={true}
           method="post"
           className="card comment-form"
-          key={Date()}
         >
           <div className="card-block">
             <textarea
