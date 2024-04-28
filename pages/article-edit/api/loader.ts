@@ -1,7 +1,7 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/node";
 import type { FetchResponse } from "openapi-fetch";
 
-import { GET, getUserFromSession } from "shared/api";
+import { GET, requireUser } from "shared/api";
 
 async function throwAnyErrors<T, O, Media extends `${string}/${string}`>(
   responsePromise: Promise<FetchResponse<T, O, Media>>,
@@ -16,7 +16,7 @@ async function throwAnyErrors<T, O, Media extends `${string}/${string}`>(
 }
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
-  const currentUser = await getUserFromSession(request);
+  const currentUser = await requireUser(request);
 
   if (!params.slug) {
     return { article: null };
@@ -25,7 +25,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   return throwAnyErrors(
     GET("/articles/{slug}", {
       params: { path: { slug: params.slug } },
-      headers: { Authorization: `Token ${currentUser?.token}` },
+      headers: { Authorization: `Token ${currentUser.token}` },
     }),
   );
 };

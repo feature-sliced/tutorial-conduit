@@ -3,14 +3,10 @@ import { namedAction } from "remix-utils/named-action";
 import { redirectBack } from "remix-utils/redirect-back";
 import invariant from "tiny-invariant";
 
-import { DELETE, POST, getUserFromSession } from "shared/api";
+import { DELETE, POST, requireUser } from "shared/api";
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
-  const currentUser = await getUserFromSession(request);
-
-  if (currentUser === null) {
-    return redirect("/register");
-  }
+  const currentUser = await requireUser(request);
 
   const authorization = { Authorization: `Token ${currentUser.token}` };
 

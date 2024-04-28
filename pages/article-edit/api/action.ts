@@ -1,6 +1,6 @@
 import { json, redirect, type ActionFunctionArgs } from "@remix-run/node";
 
-import { POST, PUT, getUserFromSession } from "shared/api";
+import { POST, PUT, requireUser } from "shared/api";
 import { parseAsArticle } from "../model/parseAsArticle";
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
@@ -10,7 +10,7 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
     );
     const tagList = tags?.split(",") ?? [];
 
-    const currentUser = await getUserFromSession(request);
+    const currentUser = await requireUser(request);
     const payload = {
       body: {
         article: {
@@ -20,7 +20,7 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
           tagList,
         },
       },
-      headers: { Authorization: `Token ${currentUser?.token}` },
+      headers: { Authorization: `Token ${currentUser.token}` },
     };
 
     const { data, error } = await (params.slug
