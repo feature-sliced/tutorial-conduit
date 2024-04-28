@@ -8,8 +8,6 @@ export function ArticleMeta() {
   const currentUser = useContext(CurrentUser);
   const { article } = useLoaderData<typeof loader>();
 
-  if (!article) return null;
-
   return (
     <Form method="post">
       <div className="article-meta">

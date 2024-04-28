@@ -11,7 +11,7 @@ export function ArticleReadPage() {
     <div className="article-page">
       <div className="banner">
         <div className="container">
-          <h1>{article?.article.title}</h1>
+          <h1>{article.article.title}</h1>
 
           <ArticleMeta />
         </div>
@@ -21,8 +21,8 @@ export function ArticleReadPage() {
         <div className="row article-content">
           <div className="col-md-12">
             <ul className="tag-list">
-              <p>{article?.article.body}</p>
-              {article?.article.tagList.map((tag) => (
+              <p>{article.article.body}</p>
+              {article.article.tagList.map((tag) => (
                 <li className="tag-default tag-pill tag-outline" key={tag}>
                   {tag}
                 </li>

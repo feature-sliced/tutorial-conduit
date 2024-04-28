@@ -8,8 +8,6 @@ export function Comments() {
   const { comments } = useLoaderData<typeof loader>();
   const currentUser = useContext(CurrentUser);
 
-  if (!comments) return null;
-
   return (
     <div className="col-xs-12 col-md-8 offset-md-2">
       {currentUser !== null ? (

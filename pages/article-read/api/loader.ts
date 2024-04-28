@@ -5,14 +5,16 @@ import { promiseHash } from "remix-utils/promise";
 
 import { GET, getUserFromSession } from "shared/api";
 
-async function throwAnyErrors<T>(responsePromise: Promise<FetchResponse<T>>) {
+async function throwAnyErrors<T, O, Media extends `${string}/${string}`>(
+  responsePromise: Promise<FetchResponse<T, O, Media>>,
+) {
   const { data, error, response } = await responsePromise;
 
   if (error !== undefined) {
     throw json(error, { status: (response as Response).status });
   }
 
-  return data;
+  return data as NonNullable<typeof data>;
 }
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
