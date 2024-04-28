@@ -50,3 +50,13 @@ export async function getUserFromSession(request: Request) {
 
   return session.get("user") ?? null;
 }
+
+export async function requireUser(request: Request) {
+  const user = await getUserFromSession(request);
+
+  if (user === null) {
+    throw redirect("/login");
+  }
+
+  return user;
+}
