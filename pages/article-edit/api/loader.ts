@@ -9,7 +9,7 @@ async function throwAnyErrors<T, O, Media extends `${string}/${string}`>(
   const { data, error, response } = await responsePromise;
 
   if (error !== undefined) {
-    throw json(error, { status: (response as Response).status });
+    throw json(error, { status: response.status });
   }
 
   return data as NonNullable<typeof data>;
