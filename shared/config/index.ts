@@ -1,1 +1,0 @@
-export { backendBaseUrl } from "./backend";

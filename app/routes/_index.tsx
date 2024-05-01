@@ -1,10 +1,13 @@
 import type { MetaFunction } from "@remix-run/node";
-import { FeedPage } from "pages/feed";
-
-export { loader } from "pages/feed";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Conduit" }];
 };
 
-export default FeedPage;
+export default function Index() {
+  return (
+    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
+      <h1>Welcome to the Feature-Sliced Design tutorial!</h1>
+    </div>
+  );
+}
