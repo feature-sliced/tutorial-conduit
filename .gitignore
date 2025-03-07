@@ -6,3 +6,4 @@ node_modules
 .env
 
 shared/api/v1.d.ts
+local.db
