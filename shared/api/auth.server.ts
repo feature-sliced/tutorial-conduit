@@ -5,7 +5,7 @@ import type { User } from "./models";
 
 invariant(
   process.env.SESSION_SECRET,
-  "SESSION_SECRET must be set for authentication to work",
+  "SESSION_SECRET must be set for authentication to work. Did you rename .env.example to .env?",
 );
 
 const sessionStorage = createCookieSessionStorage<{
